@@ -1,0 +1,7 @@
+priority_icon,intervention_id,intervention_name,description,affected_players,pct_of_at_risk,mean_confidence,expected_d7_lift,status,experiment_metric
+🔴 HIGH,INT-04,Weekend Event Invite,Send FUT Champions Weekend League invitation with bonus reward multiplier,39,0.015924867292772562,0.737,8%-15%,Ready,D7 Retention Rate
+🔴 HIGH,INT-03,Mode Switch Prompt,Suggest Squad Battles or casual mode after 3+ consecutive ranked losses,1086,0.4434463046141282,0.695,5%-10%,Ready,D7 Retention Rate
+🟠 MEDIUM,INT-06,Friend Match Suggestion,Prompt player to invite a friend for a co-op or head-to-head match,1425,0.5818701510820743,0.677,5%-11%,Ready,D7 Retention Rate
+🟠 MEDIUM,INT-02,XP Boost Notification,Send in-game notification of 2x XP for the next session,11904,4.860759493670886,0.554,4%-9%,Draft,D7 Retention Rate
+🟠 MEDIUM,INT-01,Relaxed Matchmaking,Reduce skill gap threshold by 15% for the next match to improve perceived fairness,706,0.2882809309922417,0.541,6%-12%,Draft,D7 Retention Rate
+🟡 LOW,INT-05,Reward Progression Highlight,Show player their progress toward next reward tier with personalised milestone prompt,11237,4.588403429971417,0.515,3%-7%,Draft,D7 Retention Rate

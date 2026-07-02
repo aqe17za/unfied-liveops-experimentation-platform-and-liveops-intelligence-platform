@@ -1,0 +1,6 @@
+experiment_id,best_segment,worst_segment,lift_range,hte_detected,hte_type,hte_confidence,rollout_eligible
+EXP-002,Healthy,Critical,0.08801309774857913,True,Incidental,Medium,False
+EXP-003,At Risk,Healthy,0.09270524173553785,True,Designed,High,True
+EXP-004,Healthy,At Risk,0.030743396912067067,True,Incidental,Low,False
+EXP-005,Healthy,At Risk,0.07738430811537655,True,Incidental,Medium,False
+EXP-006,Stable,At Risk,0.0774525018623905,True,Incidental,Medium,False

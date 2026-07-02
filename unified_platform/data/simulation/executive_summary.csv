@@ -1,0 +1,7 @@
+Experiment,Decision,Confidence,Primary Reason,Next Action
+EXP-001,BLOCKED,-,Randomization was broken before the experiment started (control/treatment split was uneven),Fix the randomization setup and rerun before analyzing results
+EXP-002,SHIP,92,Consistently positive results across every check we ran,Roll out to all players
+EXP-003,SEGMENT ROLLOUT,66,"Worked well for a specific group of players, even though the overall average effect was weak",Roll out to the specific player group it worked for; leave everyone else as-is
+EXP-004,SHIP,91,Consistently positive results across every check we ran,Roll out to all players
+EXP-005,KILL,-,"Looked good at first, but the benefit faded (or reversed) over time",Do not ship; redesign the feature before testing again
+EXP-006,KILL,-,Hurt a key safety metric (e.g. players quitting more often),Do not ship; redesign the feature before testing again

@@ -1,0 +1,5 @@
+PXI Tier,Player Count,% of Total,Mean PXI,D1 Return Rate,D7 Return Rate,Avg Matches/Week,Primary Risk Factor
+Healthy,7784,39.4%,80.3,93.1%,79.2%,8.2,Losing Streak
+Stable,9525,48.2%,67.3,73.5%,60.0%,5.4,Losing Streak
+At Risk,2410,12.2%,48.9,52.2%,33.7%,2.9,Declining Activity
+Critical,39,0.2%,31.4,27.6%,13.8%,1.1,Declining Activity

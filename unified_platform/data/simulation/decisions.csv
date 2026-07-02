@@ -1,0 +1,7 @@
+experiment_id,decision,reasoning,evidence_strength,dcs,escalate_to_review,decision_path,p_value_uncorrected,bayesian_prob_positive,guardrail_status,novelty_detected,hte_type
+EXP-001,BLOCKED,BLOCKED (NOT READY),,,False,,,,,,
+EXP-002,SHIP,Strong evidence,Strong,92.26537340089223,False,Guardrails Clean -> Positive Effect -> Evidence: Strong -> BH Multiple Testing Warning -> SHIP,0.020998572232878276,0.9896022292423275,Clean,False,Incidental
+EXP-003,SEGMENT ROLLOUT,"Weak pooled evidence, but Designed HTE rescues it",Weak,66.47160573578759,False,Guardrails Clean -> Positive Effect -> Evidence: Weak -> HTE: Designed + Rollout Eligible + High Confidence -> SEGMENT ROLLOUT (Weak Pooled Evidence),0.06700136245310391,0.9666487870457677,Clean,False,Designed
+EXP-004,SHIP,Strong evidence,Strong,90.6526630842373,False,Guardrails Clean -> Positive Effect -> Evidence: Strong -> BH Multiple Testing Warning -> SHIP,0.03400126411164197,0.9831225052081206,Clean,False,Incidental
+EXP-005,KILL,Novelty effect: early lift does not persist late,Strong,,False,Guardrails Clean -> Positive Effect -> Novelty Effect Detected,0.019000699007925774,0.9905967255981147,Clean,True,Incidental
+EXP-006,KILL,Guardrail violation,Strong,,False,Guardrail Violation,0.04100270862670685,0.9796295920306157,Violated,False,Incidental

@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+.env
+.env.*
+
+# Streamlit cache
+.streamlit/secrets.toml
+
+# Python cache
+.pytest_cache/
+
+# Temporary files
+*.tmp
+
+
+# Tableau project
+EA SPORTS FC Unified Tableau/

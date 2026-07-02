@@ -1,0 +1,188 @@
+project:
+  name: "EA SPORTS FC Unified LiveOps & Experimentation Platform"
+  version: "1.0.0"
+  author: "Aqeel Khan"
+  description: >
+    A unified platform combining player health scoring (MQI/PXI), churn
+    prediction, and LiveOps intervention recommendations (LiveOps half)
+    with an A/B-test decision engine that consumes those PXI tiers for
+    heterogeneous-effect segmentation (Experimentation half).
+
+# ============================================================
+# LIVEOPS — EA SPORTS FC LiveOps Intelligence Platform
+# ============================================================
+liveops:
+  data:
+    raw_path: "data/raw/"
+    processed_path: "data/processed/"
+    feature_store_path: "data/feature_store/"
+    db_path: "data/processed/liveops.db"
+    filename: "high_diamond_ranked_10min.csv"
+
+  mqi:
+    weights:
+      # Updated from initial hypothesis (0.32/0.28/0.20/0.20) after
+      # sensitivity analysis in notebooks/02_mqi_engine.ipynb found
+      # this weighting produces the strongest negative correlation
+      # with the ragequit proxy (r=-0.3777 vs base r=-0.2624).
+      competitiveness: 0.25
+      skill_balance: 0.25
+      quit_penalty: 0.35
+      comeback_factor: 0.15
+    tiers:
+      elite: 80
+      good: 65
+      average: 50
+      below_average: 35
+      poor: 0
+    tier_labels:
+      elite: "Elite"
+      good: "Good"
+      average: "Average"
+      below_average: "Below Average"
+      poor: "Poor"
+
+  pxi:
+    weights:
+      avg_mqi_last5: 0.40
+      session_consistency: 0.20
+      engagement_trend: 0.20
+      streak_factor: 0.20
+    tiers:
+      healthy: 75
+      stable: 55
+      at_risk: 35
+      critical: 0
+    tier_labels:
+      healthy: "Healthy"
+      stable: "Stable"
+      at_risk: "At Risk"
+      critical: "Critical"
+    north_star_benchmarks:
+      healthy:
+        d1_return: 0.87
+        d7_return: 0.74
+        avg_matches_per_week: 8.2
+      stable:
+        d1_return: 0.71
+        d7_return: 0.58
+        avg_matches_per_week: 5.4
+      at_risk:
+        d1_return: 0.48
+        d7_return: 0.31
+        avg_matches_per_week: 2.9
+      critical:
+        d1_return: 0.22
+        d7_return: 0.11
+        avg_matches_per_week: 1.1
+
+  model:
+    quit_predictor:
+      n_estimators: 300
+      learning_rate: 0.05
+      max_depth: 5
+      min_child_weight: 3
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+      cv_folds: 5
+      high_risk_threshold: 0.60
+
+  intervention:
+    confidence_threshold: 0.30
+    top_n_recommendations: 3
+    experiment_run_days: 14
+    experiment_confidence_target: 0.90
+    min_d7_lift_to_rollout: 0.05
+
+  dashboard:
+    primary_color: "#FF4B00"
+    secondary_color: "#1a1a1a"
+    background_color: "#0f0f0f"
+    text_color: "#FFFFFF"
+    accent_color: "#FFA500"
+    success_color: "#00CC55"
+    danger_color: "#FF2222"
+    warning_color: "#FFBB00"
+    title: "EA SPORTS FC | LiveOps Intelligence Platform"
+    tier_colors:
+      Elite: "#00CC55"
+      Good: "#88DD00"
+      Average: "#FFBB00"
+      Below Average: "#FF7700"
+      Poor: "#FF2222"
+      Healthy: "#00CC55"
+      Stable: "#5599FF"
+      At Risk: "#FF7700"
+      Critical: "#FF2222"
+    priority_colors:
+      HIGH: "#FF2222"
+      MEDIUM: "#FF8800"
+      LOW: "#FFBB00"
+
+# ============================================================
+# EXPERIMENTATION — EA SPORTS FC Live Experimentation Platform
+# ============================================================
+experimentation:
+  data:
+    simulation_path: "data/simulation/"
+    schema_db: "analytics_schema/schema.db"
+
+  simulation:
+    rng_seed: 42
+    baselines:
+      at_risk: 0.337       # Real D7 Return Rate, At Risk tier (Project 1 north_star_metrics)
+      all: 0.600           # Approximated by the Stable-tier D7 return rate
+      ragequit: 0.18       # Experiment-level ragequit guardrail baseline
+      completion: 0.95
+    exp003_tier_effects:   # Per-tier effect sizes for EXP-003's designed HTE
+      Healthy: -0.008
+      Stable: 0.012
+      At Risk: 0.075
+      Critical: 0.044
+
+  validation:
+    srm_p_threshold: 0.01        # Below this, randomization is considered broken (hard gate)
+    ers_ready_threshold: 70      # ERS >= this to be READY
+    ers_weights:
+      sample_adequacy: 0.20
+      randomization_health: 0.25
+      metric_completeness: 0.20
+      data_quality: 0.20
+      statistical_power: 0.15
+    guardrail_ragequit_threshold_pp: 0.05   # "Ragequit > baseline + 5%" rollback criterion
+
+  statistics:
+    alpha: 0.05
+    mc_samples: 5000
+    random_seed: 42
+    bayes_significant_threshold: 0.75
+    novelty_decay_threshold: 0.5   # decay_ratio below this => novelty effect detected
+
+  hte:
+    alpha: 0.05
+    mde: 0.02                # 2pp minimum detectable (practical) effect
+    practical_threshold: 0.02   # HTEClassifier's practical-lift threshold (matches mde)
+
+  decision:
+    alpha: 0.05
+    mde: 0.02
+    effect_threshold: 40     # [0-100] effect-size gate for "Strong"/"Moderate" evidence
+    dcs_weights:
+      ers: 0.20
+      frequentist: 0.20
+      bayesian: 0.20
+      guardrail: 0.20
+      effect: 0.15
+      hte: 0.05
+
+  dashboard:
+    primary_color: "#FF4B00"
+    background_color: "#0f0f0f"
+    secondary_background_color: "#1a1a1a"
+    text_color: "#FFFFFF"
+    accent_color: "#FFA500"
+    success_color: "#00CC55"
+    danger_color: "#FF2222"
+    warning_color: "#FFBB00"
+    title: "EA SPORTS FC Experimentation Platform"

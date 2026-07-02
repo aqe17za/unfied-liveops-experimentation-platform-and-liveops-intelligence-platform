@@ -1,0 +1,7 @@
+experiment_id,feature_name,srm_p_value,srm_passed,ers_score,ers_label,blocking_reason,guardrail_status
+EXP-001,Relaxed Matchmaking,0.00653690740839831,False,0.0,NOT READY,SRM Failed: p=0.0065 (< 0.01). Randomization broken.,Clean
+EXP-002,XP Boost Notification,1.0,True,94.6564211559956,READY,,Clean
+EXP-003,Mode Switch Prompt,1.0,True,93.12816118432661,READY,,Clean
+EXP-004,Weekend Event Invite,1.0,True,94.13881437956239,READY,,Clean
+EXP-005,Reward Progression Highlight,1.0,True,96.02576959318426,READY,,Clean
+EXP-006,Friend Match Suggestion,1.0,True,92.73353460480396,READY,,Violated

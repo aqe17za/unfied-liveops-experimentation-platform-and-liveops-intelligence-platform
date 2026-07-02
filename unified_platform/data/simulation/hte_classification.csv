@@ -1,0 +1,6 @@
+experiment_id,hte_type,hte_confidence,rationale
+EXP-002,Incidental,Medium,Incidental HTE (lift range 0.0880). Moderate variation from sampling. Use as signal but not driver.
+EXP-003,Designed,High,EXP-003 designed for At Risk segment. Lift range 0.0927 confirms HTE. Confidence: High.
+EXP-004,Incidental,Low,"Incidental HTE (lift range 0.0307). Low confidence, likely sampling noise."
+EXP-005,Incidental,Medium,Incidental HTE (lift range 0.0774). Moderate variation from sampling. Use as signal but not driver.
+EXP-006,Incidental,Medium,Incidental HTE (lift range 0.0775). Moderate variation from sampling. Use as signal but not driver.

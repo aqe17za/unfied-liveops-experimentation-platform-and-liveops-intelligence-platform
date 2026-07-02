@@ -1,0 +1,18 @@
+============================================================
+VALIDATION
+============================================================
+Total rows: 6000 (6 experiments)
+EXP-001: Control=457, Treatment=543
+EXP-002: Control=500, Treatment=500
+EXP-003: Control=500, Treatment=500
+EXP-004: Control=500, Treatment=500
+EXP-005: Control=500, Treatment=500
+EXP-006: Control=500, Treatment=500
+   EXP-001: Control=0.3350, Treatment=0.3415, Lift=+0.0065
+   EXP-002: Control=0.5939, Treatment=0.6231, Lift=+0.0292
+   EXP-003: Control=0.6046, Treatment=0.6137, Lift=+0.0091
+   EXP-004: Control=0.6141, Treatment=0.6722, Lift=+0.0581
+   EXP-005: Control=0.5815, Treatment=0.6341, Lift=+0.0526
+   EXP-006: Control=0.5888, Treatment=0.6155, Lift=+0.0266
+
+All validations passed
